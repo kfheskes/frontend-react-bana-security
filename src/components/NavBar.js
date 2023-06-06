@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from '../assets/banana-01.png';
-import { useHistory, Link } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
+
 
 function NavBar() {
-  const history = useHistory();
+  const navigate = useNavigate();
+  const [isAuth, setIsAuth] = useState(null)
+// function handleClick() {
+//   login();
+//   navigate ();
+//   }
+//
+//   function logIn(){
+//
+//   }
+//
+//   function logOut {
+//
+//   }
 
   return (
     <nav>
@@ -19,13 +33,13 @@ function NavBar() {
       <div>
         <button
           type="button"
-          onClick={() => history.push('/signin')}
+          onClick={() => navigate('/signin')}
         >
           Log in
         </button>
         <button
           type="button"
-          onClick={() => history.push('/signup')}
+          onClick={() => navigate('/signup')}
         >
           Registreren
         </button>
