@@ -1,14 +1,28 @@
-import {useState} from "react";
+import {createContext, useState} from "react";
 
+export const AuthContext = createContext(null)
+export function AuthContextProvider({children}) {
+    const [isAuth, setIsAuth] = useState(false)
 
-export function AuthContext() {
-    const [isAuth, setIsAuth] = useState(null)
+    function login() {
+        setIsAuth(true)
+    }
 
+    function logout() {
+        setIsAuth(false)
+    }
 
+    const data ={
+        isAuth: isAuth,
+        logout: logout,
+        login: login
+    }
 
     return (
-        <div>
-
-        </div>
+        <AuthContext.Provider value={data}>
+            {children}
+        </AuthContext.Provider>
     );
 };
+
+export default AuthContextProvider
