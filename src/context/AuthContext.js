@@ -1,6 +1,11 @@
+import {useState} from "react";
 
 
-export function AuthContext(props: Props) {
+export function AuthContext() {
+    const [isAuth, setIsAuth] = useState(null)
+
+
+
     return (
         <div>
 
