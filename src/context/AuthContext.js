@@ -1,7 +1,7 @@
 import {createContext, useState} from "react";
 
 export const AuthContext = createContext(null)
-export function AuthContextProvider({children}) {
+ function AuthContextProvider({children}) {
     const [isAuth, setIsAuth] = useState(false)
 
     function login() {
@@ -12,10 +12,10 @@ export function AuthContextProvider({children}) {
         setIsAuth(false)
     }
 
-    const data ={
-        isAuth: isAuth,
-        logout: logout,
-        login: login
+    const data = {
+        isAuth,
+        login,
+        logout
     }
 
     return (

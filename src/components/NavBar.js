@@ -3,10 +3,13 @@ import logo from '../assets/banana-01.png';
 import { useNavigate,Link } from 'react-router-dom';
 import {AuthContext} from "../context/AuthContext";
 
+
 function NavBar() {
   const navigate = useNavigate();
-  const [isAuth, login, logout] = useContext(AuthContext)
 
+  const [isAuth, login, logout] = useContext(AuthContext);
+
+  console.log(isAuth)
 
   return (
     <nav>
