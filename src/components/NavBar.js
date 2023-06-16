@@ -3,9 +3,6 @@ import logo from '../assets/banana-01.png';
 import { useNavigate,Link } from 'react-router-dom';
 import {AuthContext} from "../context/AuthContext";
 
-
-
-
 function NavBar() {
   const navigate = useNavigate();
 
