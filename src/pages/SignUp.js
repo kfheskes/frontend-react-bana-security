@@ -16,6 +16,7 @@ function SignUp() {
                 password,
                 username,
             });
+            console.log(res)
             // Stap 4: Geef de JWT mee aan de login functie
         } catch (e) {
             console.error("Registratie mislukt", e)

@@ -1,7 +1,8 @@
 import {createContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
-
+import jwt_decode from "jwt-decode";
 export const AuthContext = createContext(null)
+// Stap 1: Maak een state object aan voor de authenticatie
  function AuthContextProvider({children}) {
     const [auth, setAuth] = useState({
         isAuth: false,
@@ -10,7 +11,15 @@ export const AuthContext = createContext(null)
 
      const navigate = useNavigate()
 
-    function login() {
+     // Stap 2: Pas de verwijzingen naar de state aan (ook bij je logout functie)
+     // Stap 5: Token ontvangen en decoderen
+     // Stap 6: Token opslaan in de local storage en verwijderen bij logout
+     // Stap 7: Gebruiker ophalen met de token
+     // Stap 8: Zet gebruikers info in de state (NIET DE JWT TOKEN)
+    function login(jwt_token) {
+        const decodedToken = jwt_decode(jwt_token)
+        localStorage.setItem('token', jwt_token);
+        console.log(decodedToken)
         setAuth({
             ...auth,
             isAuth: true,
@@ -21,6 +30,7 @@ export const AuthContext = createContext(null)
     }
 
     function logout() {
+        localStorage.removeItem('token');
         setAuth({
             ...auth,
             isAuth: false,
@@ -29,11 +39,12 @@ export const AuthContext = createContext(null)
         console.log('De gebruiker is uitgelogd')
         navigate('/')
     }
-
+// Stap: 9: Geef ook de user mee aan de context
     const data = {
         isAuth: auth.isAuth,
-        login,
-        logout
+        user: auth.user,
+        login: login,
+        logout:logout
     }
 
     return (
