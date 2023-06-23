@@ -21,18 +21,23 @@ function NavBar() {
         </Link>
 
       <div>
-        <button
-          type="button"
-          onClick={ isAuth ? logout : login}
-        >
-          { isAuth ? "logout" : "login"}
-        </button>
-        <button
-          type="button"
-          onClick={ () => navigate('/signup') }
-        >
-          Registeren
-        </button>
+        {isAuth && (
+            <button type="button" onClick={logout}>
+              Logout
+            </button>
+        )}
+
+        {!isAuth && (
+            <button type="button" onClick={() => navigate('/signin')}>
+              Login
+            </button>
+        )}
+
+        {!isAuth && (
+            <button type="button" onClick={() => navigate('/signup')}>
+              Registeren
+            </button>
+        )}
       </div>
     </nav>
   );
